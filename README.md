@@ -85,10 +85,5 @@ FastSheets moves away from generic administrative UIs. It uses a **"Vibrant Suns
 
 ---
 
-## 👩‍💻 Author
-Developed with ❤️ by **Namradha Mani**.
-
----
-
 ## ⭐ Support
 If you find this project useful, give it a ⭐ on GitHub!
