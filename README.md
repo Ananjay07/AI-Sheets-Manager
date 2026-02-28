@@ -1,4 +1,4 @@
-# 🤖 Sheet Intelligence – AI-Powered Google Sheets Management
+# 🤖 AI Sheets Manager – Intelligent Google Sheets Dashboard
 
 A premium, state-of-the-art full-stack implementation that transforms a simple Google Sheet into an intelligent database managed by an Open-Source LLM. Built with **FastAPI**, **LangChain**, and **Groq (Llama 3.1)**.
 
@@ -49,8 +49,8 @@ A premium, state-of-the-art full-stack implementation that transforms a simple G
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/sheet-intelligence.git
-cd sheet-intelligence
+git clone https://github.com/Ananjay07/AI-Sheets-Manager.git
+cd AI-Sheets-Manager
 ```
 
 ### 2️⃣ Install Dependencies
