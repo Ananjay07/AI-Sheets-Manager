@@ -1,8 +1,13 @@
 fastapi
 uvicorn
 google-api-python-client
-google-auth
+google.auth
 google-auth-httplib2
 google-auth-oauthlib
 pydantic
 jinja2
+python-multipart
+langchain==0.3.0
+langchain-community
+langchain-groq
+python-dotenv

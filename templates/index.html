@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastSheets | Colorful Data Sync</title>
+    <title>Sheet Intelligence | AI-Powered Data</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #f43f5e;
-            --secondary: #8b5cf6;
-            --accent: #0ea5e9;
-            --bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #ec4899;
+            --bg: #09090b;
+            --card-bg: rgba(24, 24, 27, 0.7);
+            --text-main: #fafafa;
+            --text-muted: #a1a1aa;
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -31,216 +32,273 @@
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             padding: 2rem;
-            overflow: hidden;
-            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Animated Vibrant Backgrounds */
+        /* Animated Aura Background */
         .aura {
-            position: absolute;
-            width: 80vw;
-            height: 80vw;
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(140px);
             z-index: -1;
-            opacity: 0.4;
-            animation: pulse 15s infinite alternate ease-in-out;
+            opacity: 0.2;
+            animation: move 20s infinite alternate ease-in-out;
         }
 
         .aura-1 {
             background: var(--primary);
             top: -20%;
-            left: -20%;
+            left: -10%;
         }
 
         .aura-2 {
             background: var(--secondary);
-            bottom: -20%;
-            right: -20%;
+            bottom: -10%;
+            right: -10%;
             animation-delay: -5s;
         }
 
-        .aura-3 {
-            background: var(--accent);
-            top: 30%;
-            left: 40%;
-            width: 40vw;
-            height: 40vw;
-            animation-delay: -10s;
-        }
-
-        @keyframes pulse {
+        @keyframes move {
             0% {
                 transform: translate(0, 0) scale(1);
             }
 
             100% {
-                transform: translate(10%, 10%) scale(1.2);
+                transform: translate(15%, 15%) scale(1.1);
             }
         }
 
-        .container {
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
             width: 100%;
-            max-width: 460px;
-            perspective: 1000px;
+            height: calc(100vh - 4rem);
         }
 
-        .card {
+        /* Left Panel: Data & Form */
+        .main-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px;
-            padding: 3rem;
-            box-shadow:
-                0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            animation: cardIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) rotateX(-10deg);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2rem;
         }
 
         .header h1 {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #fb7185, #c084fc, #38bdf8);
+            background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
         }
 
-        .header p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 400;
+        /* Form Styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 120px 150px;
+            gap: 1rem;
+            align-items: end;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
+        .input-group label {
             display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 0.6rem;
-            margin-left: 0.25rem;
-            transition: color 0.3s;
-        }
-
-        .form-group:focus-within label {
-            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 0.9rem 1.25rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
             color: white;
-            font-size: 1rem;
-            font-weight: 500;
             transition: all 0.3s;
-            outline: none;
         }
 
         input:focus {
+            outline: none;
             border-color: var(--primary);
-            background: rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.15);
+            background: rgba(0, 0, 0, 0.5);
         }
 
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .btn-submit {
+            background: var(--primary);
             color: white;
             border: none;
-            border-radius: 16px;
-            padding: 1.1rem;
-            font-size: 1rem;
+            border-radius: 12px;
+            padding: 0.8rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
+            transition: transform 0.2s;
         }
 
-        .btn:hover {
+        .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(244, 63, 94, 0.4);
             filter: brightness(1.1);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        /* Table Styles */
+        .data-table-container {
+            flex-grow: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Success Toast */
-        .toast {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: #ffffff;
-            color: #0f172a;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-weight: 700;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .score-badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Right Panel: AI Chat */
+        .ai-panel {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            background: rgba(24, 24, 27, 0.4);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 1000;
         }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
+        .ai-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
-        .toast-icon {
-            width: 24px;
-            height: 24px;
-            background: #10b981;
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .msg {
+            max-width: 85%;
+            padding: 1rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .msg-ai {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 4px;
+        }
+
+        .msg-user {
+            align-self: flex-end;
+            background: var(--primary);
             color: white;
-            border-radius: 50%;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: white;
+        }
+
+        .btn-send {
+            background: var(--text-main);
+            color: black;
+            border: none;
+            width: 44px;
+            border-radius: 12px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 2.5rem 1.5rem;
+        /* Loader */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-muted);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                height: auto;
             }
 
-            .aura {
-                filter: blur(80px);
+            .ai-panel {
+                height: 600px;
             }
         }
     </style>
@@ -249,56 +307,175 @@
 <body>
     <div class="aura aura-1"></div>
     <div class="aura aura-2"></div>
-    <div class="aura aura-3"></div>
 
-    <div class="container">
-        {% if success %}
-        <div id="successToast" class="toast">
-            <div class="toast-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+    <div class="dashboard-grid">
+        <!-- Main Content (Left) -->
+        <div class="main-panel">
+            <header class="header">
+                <h1>Sheet Intelligence</h1>
+                <p style="color: var(--text-muted)">Real-time AI management for Google Sheets</p>
+            </header>
+
+            <!-- Quick Add Form -->
+            <div class="glass-card">
+                <form action="/submit" method="POST" class="form-row">
+                    <div class="input-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Score</label>
+                        <input type="number" name="score" placeholder="100" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Add Entry</button>
+                </form>
             </div>
-            Data stored!
+
+            <!-- Data Table -->
+            <div class="glass-card data-table-container">
+                <div style="display: flex; justify-content: space-between; align-items: center">
+                    <h3 style="font-weight: 700">Spreadsheet Rows</h3>
+                    <button onclick="fetchData()"
+                        style="background: none; border: none; color: var(--primary); cursor: pointer; font-weight: 600">Refresh</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>SCORE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-body">
+                        <!-- Loaded via JS -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                const toast = document.getElementById('successToast');
-                setTimeout(() => toast.classList.add('show'), 100);
-                setTimeout(() => toast.classList.remove('show'), 4000);
-            });
-        </script>
-        {% endif %}
 
-        <div class="card">
-            <div class="header">
-                <h1>FastSheets</h1>
-                <p>Sync data with your cloud sheets</p>
+        <!-- AI Panel (Right) -->
+        <div class="ai-panel">
+            <div class="ai-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary)">
+                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+                    <path d="M12 12L2.1 12"></path>
+                    <path d="M12 12L22 12"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <h2>AI Insights</h2>
             </div>
 
-            <form action="/submit" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="E.g. John Doe" required>
+            <div class="chat-messages" id="chat-messages">
+                <div class="msg msg-ai">
+                    Hello! I'm your Sheet Intelligence assistant. You can ask me to analyze data, update scores (via
+                    email), or add new users. How can I help?
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="E.g. john@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="score">Score</label>
-                    <input type="number" id="score" name="score" placeholder="E.g. 98" required>
-                </div>
-
-                <button type="submit" class="btn">
-                    Submit Data
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Update John's score to 85...">
+                <button class="btn-send" onclick="sendMessage()" id="send-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
                 </button>
-            </form>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Fetch SpreadSheet Data
+        async function fetchData() {
+            const tbody = document.getElementById('data-body');
+            try {
+                const response = await fetch('/api/get-users/');
+                const result = await response.json();
+
+                tbody.innerHTML = '';
+                // Skip header row if it exists
+                const data = result.data.length > 0 && isHeader(result.data[0]) ? result.data.slice(1) : result.data;
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight: 500">${row[0] || '-'}</td>
+                        <td style="color: var(--text-muted)">${row[1] || '-'}</td>
+                        <td><span class="score-badge">${row[2] || '0'}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        }
+
+        function isHeader(row) {
+            return row[0].toLowerCase() === 'name';
+        }
+
+        // AI Chat Functionality
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const container = document.getElementById('chat-messages');
+            const btn = document.getElementById('send-btn');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            appendMessage(message, 'user');
+            input.value = '';
+
+            // Add thinking state
+            btn.innerHTML = '<div class="loader"></div>';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const result = await response.json();
+
+                // Ensure we have a valid response string
+                const aiResponse = result.response || result.detail || "I'm sorry, I received an invalid response format from the server.";
+                appendMessage(aiResponse, 'ai');
+
+                // Refresh data in case LLM made changes
+                fetchData();
+            } catch (error) {
+                appendMessage('Sorry, I encountered a network error connecting to the LLM.', 'ai');
+            } finally {
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+                btn.disabled = false;
+            }
+        }
+
+        function appendMessage(text, side) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `msg msg-${side}`;
+            div.innerText = text;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Initial Load
+        window.onload = fetchData;
+
+        // Enter to send
+        document.getElementById('chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
 </body>
 
 </html>

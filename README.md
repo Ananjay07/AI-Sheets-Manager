@@ -1,17 +1,19 @@
-# 🚀 FastSheets – Premium FastAPI + Google Sheets Integration
+# 🤖 Sheet Intelligence – AI-Powered Google Sheets Management
 
-A high-performance, visually stunning web application built with **FastAPI**, **Google OAuth 2.0**, and **Google Sheets API**. FastSheets allows you to submit data through a modern, vibrant landing page and sync it instantly with your cloud spreadsheets.
+A premium, state-of-the-art full-stack implementation that transforms a simple Google Sheet into an intelligent database managed by an Open-Source LLM. Built with **FastAPI**, **LangChain**, and **Groq (Llama 3.1)**.
+
+![Dashboard Preview](https://via.placeholder.com/1200x600.png?text=Sheet+Intelligence+Dashboard)
 
 ---
 
 ## 🌟 Key Features
 
-- ⚡ **High-Performance Backend**: Powered by FastAPI for lightning-fast request handling.
-- 🎨 **Vibrant UI**: A modern 'Vibrant Sunset' design with glassmorphism and mesh gradients.
-- 🔐 **Secure Auth**: Fully integrated with Google OAuth 2.0 for secure data access.
-- 📊 **Cloud Sync**: Real-time data appending to Google Sheets without manual entry.
-- 🔔 **Success Feedback**: Polished toast notifications for a premium user experience.
-- 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile viewing.
+- 🧠 **AI-Powered Management**: Talk to your spreadsheet in natural language. Ask to "Update John's score" or "Remove duplicates".
+- 🛠 **Autonomous Tool Calling**: The LLM uses specialized tools to Read, Search, Add, Update, and Delete data in real-time.
+- 🎨 **Premium Glassmorphism UI**: A stunning, modern dashboard with animated backgrounds and sleek interactive elements.
+- 🔐 **Secure Google OAuth 2.0**: Enterprise-grade authentication for Google Sheets API.
+- ⚡ **Lightning Fast**: Powered by Groq's Llama 3.1 for near-instant AI responses.
+- 🧹 **Smart Cleanup**: AI-driven duplicate removal and data normalization.
 
 ---
 
@@ -20,24 +22,25 @@ A high-performance, visually stunning web application built with **FastAPI**, **
 | Layer | Technology |
 | :--- | :--- |
 | **Backend** | FastAPI (Python) |
-| **Frontend** | HTML5, CSS3 (Vanilla), Jinja2 |
-| **Auth** | Google OAuth 2.0 |
-| **Storage** | Google Sheets API v4 |
-| **Server** | Uvicorn |
+| **LLM Orchestration** | LangChain |
+| **Model** | Groq (Llama 3.1 8B Instant) |
+| **Frontend** | Vanilla HTML5, CSS3, JavaScript |
+| **Cloud Integration** | Google Sheets API v4 |
+| **Authentication** | Google OAuth 2.0 (token-based) |
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-01_fastsheets-api-main/
-│
-├── app.py                # FastAPI Backend & OAuth Logic
-├── client_secret.json    # Your Google Cloud Credentials
-├── requirements.txt      # Python Dependencies
+.
+├── app.py                # Core FastAPI application & AI Agent logic
+├── .env                  # Environment secrets (API Keys, etc.)
+├── client_secret.json    # Google Cloud OAuth credentials
+├── requirements.txt      # Project dependencies
 ├── templates/
-│   └── index.html        # Premium 'Vibrant Sunset' Frontend
-└── README.md             # Project Documentation
+│   └── index.html        # Premium AI Dashboard
+└── README.md             # You are here!
 ```
 
 ---
@@ -46,8 +49,8 @@ A high-performance, visually stunning web application built with **FastAPI**, **
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/fastsheets-api.git
-cd fastsheets-api
+git clone https://github.com/your-username/sheet-intelligence.git
+cd sheet-intelligence
 ```
 
 ### 2️⃣ Install Dependencies
@@ -55,35 +58,45 @@ cd fastsheets-api
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Setup Google Cloud (Required)
+### 3️⃣ Setup Google Cloud
 1. Go to [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project.
-3. Enable **Google Sheets API**.
-4. Configure **OAuth Consent Screen** (Add your email as a test user).
-5. Create **OAuth 2.0 Client ID (Desktop App)**.
-6. Download the JSON, rename it to `client_secret.json`, and place it in the root directory.
+2. Enable **Google Sheets API**.
+3. Create **OAuth 2.0 Client ID (Desktop App)**.
+4. Download the JSON, rename it to `client_secret.json`, and place it in the root.
 
-### 4️⃣ Configure your Spreadsheet
-1. Create a new Google Sheet.
-2. Copy the **Spreadsheet ID** from the URL: `https://docs.google.com/spreadsheets/d/YOUR_ID_HERE/edit`.
-3. Update `SPREADSHEET_ID` in `app.py` ([line 15](app.py#L15)).
+### 4️⃣ Configure Environment
+Create a `.env` file in the root:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+SPREADSHEET_ID=your_google_sheet_id_here
+```
 
 ### 5️⃣ Run the Application
 ```bash
-python -m uvicorn app:app --reload
+python -m uvicorn app:app --reload --port 8001
 ```
-Open `http://127.0.0.1:8000` in your browser.
+Visit `http://127.0.0.1:8001` to start managing your data with AI.
+
+---
+
+## 🗣 AI Interaction Examples
+
+- *"Add a new user named Alice with email alice@example.com and score 95."*
+- *"Search for any users with 'Zay' in their name."*
+- *"Clean up the sheet – remove all duplicate entries."*
+- *"Update the score of the user with email john@gmail.com to 88."*
 
 ---
 
 ## 🎨 Design Philosophy
 
-FastSheets moves away from generic administrative UIs. It uses a **"Vibrant Sunset"** aesthetic:
-- **Aura Backgrounds**: Animated radial gradients for a dynamic feel.
-- **Crystal Glassmorphism**: Cards use heavy blur and subtle borders to feel premium.
-- **Typography**: Uses 'Outfit' for a clean, modern, and readable tech look.
+Sheet Intelligence uses a **Future-Tech** aesthetic:
+- **Aura backgrounds**: Dynamic, moving aura effects for a living UI.
+- **Glassmorphism**: Translucent cards with subtle borders and heavy background blurs.
+- **Micro-animations**: Smooth transitions for AI chat bubbles and data table updates.
 
 ---
 
 ## ⭐ Support
-If you find this project useful, give it a ⭐ on GitHub!
+If you love this project, give it a ⭐ on GitHub!
+
