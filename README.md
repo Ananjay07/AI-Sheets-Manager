@@ -2,7 +2,7 @@
 
 A premium, state-of-the-art full-stack implementation that transforms a simple Google Sheet into an intelligent database managed by an Open-Source LLM. Built with **FastAPI**, **LangChain**, and **Groq (Llama 3.1)**.
 
-![Dashboard Preview](https://via.placeholder.com/1200x600.png?text=Sheet+Intelligence+Dashboard)
+![Dashboard Preview](https://via.placeholder.com/1200x600.png?text=AI+Sheets+Manager+Dashboard)
 
 ---
 
