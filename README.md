@@ -82,7 +82,7 @@ Visit `http://127.0.0.1:8001` to start managing your data with AI.
 ## 🗣 AI Interaction Examples
 
 - *"Add a new user named Alice with email alice@example.com and score 95."*
-- *"Search for any users with 'Zay' in their name."*
+- *"Search for any users with 'X' in their name."*
 - *"Clean up the sheet – remove all duplicate entries."*
 - *"Update the score of the user with email john@gmail.com to 88."*
 
